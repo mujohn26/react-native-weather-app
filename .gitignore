@@ -9,6 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
-# macOS
+# macOS 
 .DS_Store
 yarn.lock
+coverage
