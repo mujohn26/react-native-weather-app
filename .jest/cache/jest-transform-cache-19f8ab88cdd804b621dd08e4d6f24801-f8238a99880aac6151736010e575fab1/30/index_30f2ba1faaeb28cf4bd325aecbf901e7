@@ -1,0 +1,3 @@
+88ba731fe02a4aa8234b6bd96611c064
+module.exports = process.env.NODE_ENV === 'production' ? require("./build/mocks") : require("./build");
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU0sQ0FBTixPQUFBLEdBQWlCLE9BQU8sQ0FBUCxHQUFBLENBQUEsUUFBQSxLQUFBLFlBQUEsR0FBd0MsT0FBeEMsaUJBQUEsR0FBbUUsT0FBcEYsV0FBQSIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gcHJvY2Vzcy5lbnYuTk9ERV9FTlYgPT09ICdwcm9kdWN0aW9uJyA/IHJlcXVpcmUoJy4vYnVpbGQvbW9ja3MnKSA6IHJlcXVpcmUoJy4vYnVpbGQnKTtcblxuIl19

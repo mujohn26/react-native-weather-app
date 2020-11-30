@@ -1,0 +1,1 @@
+{"version":3,"sources":["initialState.js"],"names":["state"],"mappings":";;;;AAAA,IAAMA,KAAK,GAAG,EAAd;eAEeA,K","sourcesContent":["const state = {};\n\nexport default state;"]}

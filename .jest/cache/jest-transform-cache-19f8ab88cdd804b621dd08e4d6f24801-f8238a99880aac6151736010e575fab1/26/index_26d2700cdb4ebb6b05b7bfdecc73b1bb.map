@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["weatherReducer"],"mappings":";;;;;;;AAAA;;AACA;;eAEe,4BAAgB;AAC3BA,EAAAA,cAAc,EAAdA;AAD2B,CAAhB,C","sourcesContent":["import {combineReducers} from 'redux';\nimport weatherReducer from './weatherReducer';\n\nexport default combineReducers({\n    weatherReducer\n});"]}

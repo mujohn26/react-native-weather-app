@@ -1,0 +1,619 @@
+e85bde1f57c0f676b0bd00d4973a7fa5
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _exportNames = {
+  getProviderStatusAsync: true,
+  enableNetworkProviderAsync: true,
+  getCurrentPositionAsync: true,
+  getLastKnownPositionAsync: true,
+  watchPositionAsync: true,
+  getHeadingAsync: true,
+  watchHeadingAsync: true,
+  geocodeAsync: true,
+  reverseGeocodeAsync: true,
+  getPermissionsAsync: true,
+  requestPermissionsAsync: true,
+  hasServicesEnabledAsync: true,
+  isBackgroundLocationAvailableAsync: true,
+  startLocationUpdatesAsync: true,
+  stopLocationUpdatesAsync: true,
+  hasStartedLocationUpdatesAsync: true,
+  startGeofencingAsync: true,
+  stopGeofencingAsync: true,
+  hasStartedGeofencingAsync: true,
+  setApiKey: true,
+  PermissionStatus: true,
+  Accuracy: true,
+  ActivityType: true,
+  GeofencingEventType: true,
+  GeofencingRegionState: true,
+  EventEmitter: true,
+  setGoogleApiKey: true,
+  _getCurrentWatchId: true,
+  installWebGeolocationPolyfill: true
+};
+exports.getProviderStatusAsync = getProviderStatusAsync;
+exports.enableNetworkProviderAsync = enableNetworkProviderAsync;
+exports.getCurrentPositionAsync = getCurrentPositionAsync;
+exports.getLastKnownPositionAsync = getLastKnownPositionAsync;
+exports.watchPositionAsync = watchPositionAsync;
+exports.getHeadingAsync = getHeadingAsync;
+exports.watchHeadingAsync = watchHeadingAsync;
+exports.geocodeAsync = geocodeAsync;
+exports.reverseGeocodeAsync = reverseGeocodeAsync;
+exports.getPermissionsAsync = getPermissionsAsync;
+exports.requestPermissionsAsync = requestPermissionsAsync;
+exports.hasServicesEnabledAsync = hasServicesEnabledAsync;
+exports.isBackgroundLocationAvailableAsync = isBackgroundLocationAvailableAsync;
+exports.startLocationUpdatesAsync = startLocationUpdatesAsync;
+exports.stopLocationUpdatesAsync = stopLocationUpdatesAsync;
+exports.hasStartedLocationUpdatesAsync = hasStartedLocationUpdatesAsync;
+exports.startGeofencingAsync = startGeofencingAsync;
+exports.stopGeofencingAsync = stopGeofencingAsync;
+exports.hasStartedGeofencingAsync = hasStartedGeofencingAsync;
+exports.setApiKey = setApiKey;
+Object.defineProperty(exports, "PermissionStatus", {
+  enumerable: true,
+  get: function get() {
+    return _unimodulesPermissionsInterface.PermissionStatus;
+  }
+});
+Object.defineProperty(exports, "Accuracy", {
+  enumerable: true,
+  get: function get() {
+    return _Location.LocationAccuracy;
+  }
+});
+Object.defineProperty(exports, "ActivityType", {
+  enumerable: true,
+  get: function get() {
+    return _Location.LocationActivityType;
+  }
+});
+Object.defineProperty(exports, "GeofencingEventType", {
+  enumerable: true,
+  get: function get() {
+    return _Location.LocationGeofencingEventType;
+  }
+});
+Object.defineProperty(exports, "GeofencingRegionState", {
+  enumerable: true,
+  get: function get() {
+    return _Location.LocationGeofencingRegionState;
+  }
+});
+Object.defineProperty(exports, "EventEmitter", {
+  enumerable: true,
+  get: function get() {
+    return _LocationEventEmitter.LocationEventEmitter;
+  }
+});
+Object.defineProperty(exports, "setGoogleApiKey", {
+  enumerable: true,
+  get: function get() {
+    return _LocationGoogleGeocoding.setGoogleApiKey;
+  }
+});
+Object.defineProperty(exports, "_getCurrentWatchId", {
+  enumerable: true,
+  get: function get() {
+    return _LocationSubscribers._getCurrentWatchId;
+  }
+});
+Object.defineProperty(exports, "installWebGeolocationPolyfill", {
+  enumerable: true,
+  get: function get() {
+    return _GeolocationPolyfill.installWebGeolocationPolyfill;
+  }
+});
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _core = require("@unimodules/core");
+
+var _unimodulesPermissionsInterface = require("unimodules-permissions-interface");
+
+var _ExpoLocation = _interopRequireDefault(require("./ExpoLocation"));
+
+var _Location = require("./Location.types");
+
+Object.keys(_Location).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _Location[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Location[key];
+    }
+  });
+});
+
+var _LocationEventEmitter = require("./LocationEventEmitter");
+
+var _LocationGoogleGeocoding = require("./LocationGoogleGeocoding");
+
+var _LocationSubscribers = require("./LocationSubscribers");
+
+var _GeolocationPolyfill = require("./GeolocationPolyfill");
+
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } it = o[Symbol.iterator](); return it.next.bind(it); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function getProviderStatusAsync() {
+  return _regenerator.default.async(function getProviderStatusAsync$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          return _context.abrupt("return", _ExpoLocation.default.getProviderStatusAsync());
+
+        case 1:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function enableNetworkProviderAsync() {
+  return _regenerator.default.async(function enableNetworkProviderAsync$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          if (!(_core.Platform.OS === 'android')) {
+            _context2.next = 2;
+            break;
+          }
+
+          return _context2.abrupt("return", _ExpoLocation.default.enableNetworkProviderAsync());
+
+        case 2:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function getCurrentPositionAsync() {
+  var options,
+      _args3 = arguments;
+  return _regenerator.default.async(function getCurrentPositionAsync$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          options = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : {};
+          return _context3.abrupt("return", _ExpoLocation.default.getCurrentPositionAsync(options));
+
+        case 2:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function getLastKnownPositionAsync() {
+  var options,
+      _args4 = arguments;
+  return _regenerator.default.async(function getLastKnownPositionAsync$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          options = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : {};
+          return _context4.abrupt("return", _ExpoLocation.default.getLastKnownPositionAsync(options));
+
+        case 2:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function watchPositionAsync(options, callback) {
+  var watchId;
+  return _regenerator.default.async(function watchPositionAsync$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          watchId = _LocationSubscribers.LocationSubscriber.registerCallback(callback);
+          _context5.next = 3;
+          return _regenerator.default.awrap(_ExpoLocation.default.watchPositionImplAsync(watchId, options));
+
+        case 3:
+          return _context5.abrupt("return", {
+            remove: function remove() {
+              _LocationSubscribers.LocationSubscriber.unregisterCallback(watchId);
+            }
+          });
+
+        case 4:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function getHeadingAsync() {
+  return _regenerator.default.async(function getHeadingAsync$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          return _context7.abrupt("return", new Promise(function _callee(resolve) {
+            var tries, subscription;
+            return _regenerator.default.async(function _callee$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    tries = 0;
+                    _context6.next = 3;
+                    return _regenerator.default.awrap(watchHeadingAsync(function (heading) {
+                      if (heading.accuracy > 1 || tries > 5) {
+                        subscription.remove();
+                        resolve(heading);
+                      } else {
+                        tries += 1;
+                      }
+                    }));
+
+                  case 3:
+                    subscription = _context6.sent;
+
+                  case 4:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, null, null, null, Promise);
+          }));
+
+        case 1:
+        case "end":
+          return _context7.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function watchHeadingAsync(callback) {
+  var watchId;
+  return _regenerator.default.async(function watchHeadingAsync$(_context8) {
+    while (1) {
+      switch (_context8.prev = _context8.next) {
+        case 0:
+          watchId = _LocationSubscribers.HeadingSubscriber.registerCallback(callback);
+          _context8.next = 3;
+          return _regenerator.default.awrap(_ExpoLocation.default.watchDeviceHeading(watchId));
+
+        case 3:
+          return _context8.abrupt("return", {
+            remove: function remove() {
+              _LocationSubscribers.HeadingSubscriber.unregisterCallback(watchId);
+            }
+          });
+
+        case 4:
+        case "end":
+          return _context8.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function geocodeAsync(address, options) {
+  return _regenerator.default.async(function geocodeAsync$(_context9) {
+    while (1) {
+      switch (_context9.prev = _context9.next) {
+        case 0:
+          if (!(typeof address !== 'string')) {
+            _context9.next = 2;
+            break;
+          }
+
+          throw new TypeError("Address to geocode must be a string. Got " + address + " instead.");
+
+        case 2:
+          if (!(options != null && options.useGoogleMaps || _core.Platform.OS === 'web')) {
+            _context9.next = 6;
+            break;
+          }
+
+          _context9.next = 5;
+          return _regenerator.default.awrap((0, _LocationGoogleGeocoding.googleGeocodeAsync)(address));
+
+        case 5:
+          return _context9.abrupt("return", _context9.sent);
+
+        case 6:
+          _context9.next = 8;
+          return _regenerator.default.awrap(_ExpoLocation.default.geocodeAsync(address));
+
+        case 8:
+          return _context9.abrupt("return", _context9.sent);
+
+        case 9:
+        case "end":
+          return _context9.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function reverseGeocodeAsync(location, options) {
+  return _regenerator.default.async(function reverseGeocodeAsync$(_context10) {
+    while (1) {
+      switch (_context10.prev = _context10.next) {
+        case 0:
+          if (!(typeof location.latitude !== 'number' || typeof location.longitude !== 'number')) {
+            _context10.next = 2;
+            break;
+          }
+
+          throw new TypeError('Location to reverse-geocode must be an object with number properties `latitude` and `longitude`.');
+
+        case 2:
+          if (!(options != null && options.useGoogleMaps || _core.Platform.OS === 'web')) {
+            _context10.next = 6;
+            break;
+          }
+
+          _context10.next = 5;
+          return _regenerator.default.awrap((0, _LocationGoogleGeocoding.googleReverseGeocodeAsync)(location));
+
+        case 5:
+          return _context10.abrupt("return", _context10.sent);
+
+        case 6:
+          _context10.next = 8;
+          return _regenerator.default.awrap(_ExpoLocation.default.reverseGeocodeAsync(location));
+
+        case 8:
+          return _context10.abrupt("return", _context10.sent);
+
+        case 9:
+        case "end":
+          return _context10.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function getPermissionsAsync() {
+  return _regenerator.default.async(function getPermissionsAsync$(_context11) {
+    while (1) {
+      switch (_context11.prev = _context11.next) {
+        case 0:
+          _context11.next = 2;
+          return _regenerator.default.awrap(_ExpoLocation.default.getPermissionsAsync());
+
+        case 2:
+          return _context11.abrupt("return", _context11.sent);
+
+        case 3:
+        case "end":
+          return _context11.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function requestPermissionsAsync() {
+  return _regenerator.default.async(function requestPermissionsAsync$(_context12) {
+    while (1) {
+      switch (_context12.prev = _context12.next) {
+        case 0:
+          _context12.next = 2;
+          return _regenerator.default.awrap(_ExpoLocation.default.requestPermissionsAsync());
+
+        case 2:
+          return _context12.abrupt("return", _context12.sent);
+
+        case 3:
+        case "end":
+          return _context12.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function hasServicesEnabledAsync() {
+  return _regenerator.default.async(function hasServicesEnabledAsync$(_context13) {
+    while (1) {
+      switch (_context13.prev = _context13.next) {
+        case 0:
+          _context13.next = 2;
+          return _regenerator.default.awrap(_ExpoLocation.default.hasServicesEnabledAsync());
+
+        case 2:
+          return _context13.abrupt("return", _context13.sent);
+
+        case 3:
+        case "end":
+          return _context13.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function _validateTaskName(taskName) {
+  if (!taskName || typeof taskName !== 'string') {
+    throw new Error("`taskName` must be a non-empty string. Got " + taskName + " instead.");
+  }
+}
+
+function isBackgroundLocationAvailableAsync() {
+  var providerStatus;
+  return _regenerator.default.async(function isBackgroundLocationAvailableAsync$(_context14) {
+    while (1) {
+      switch (_context14.prev = _context14.next) {
+        case 0:
+          _context14.next = 2;
+          return _regenerator.default.awrap(getProviderStatusAsync());
+
+        case 2:
+          providerStatus = _context14.sent;
+          return _context14.abrupt("return", providerStatus.backgroundModeEnabled);
+
+        case 4:
+        case "end":
+          return _context14.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function startLocationUpdatesAsync(taskName) {
+  var options,
+      _args15 = arguments;
+  return _regenerator.default.async(function startLocationUpdatesAsync$(_context15) {
+    while (1) {
+      switch (_context15.prev = _context15.next) {
+        case 0:
+          options = _args15.length > 1 && _args15[1] !== undefined ? _args15[1] : {
+            accuracy: _Location.LocationAccuracy.Balanced
+          };
+
+          _validateTaskName(taskName);
+
+          _context15.next = 4;
+          return _regenerator.default.awrap(_ExpoLocation.default.startLocationUpdatesAsync(taskName, options));
+
+        case 4:
+        case "end":
+          return _context15.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function stopLocationUpdatesAsync(taskName) {
+  return _regenerator.default.async(function stopLocationUpdatesAsync$(_context16) {
+    while (1) {
+      switch (_context16.prev = _context16.next) {
+        case 0:
+          _validateTaskName(taskName);
+
+          _context16.next = 3;
+          return _regenerator.default.awrap(_ExpoLocation.default.stopLocationUpdatesAsync(taskName));
+
+        case 3:
+        case "end":
+          return _context16.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function hasStartedLocationUpdatesAsync(taskName) {
+  return _regenerator.default.async(function hasStartedLocationUpdatesAsync$(_context17) {
+    while (1) {
+      switch (_context17.prev = _context17.next) {
+        case 0:
+          _validateTaskName(taskName);
+
+          return _context17.abrupt("return", _ExpoLocation.default.hasStartedLocationUpdatesAsync(taskName));
+
+        case 2:
+        case "end":
+          return _context17.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function _validateRegions(regions) {
+  if (!regions || regions.length === 0) {
+    throw new Error('Regions array cannot be empty. Use `stopGeofencingAsync` if you want to stop geofencing all regions');
+  }
+
+  for (var _iterator = _createForOfIteratorHelperLoose(regions), _step; !(_step = _iterator()).done;) {
+    var region = _step.value;
+
+    if (typeof region.latitude !== 'number') {
+      throw new TypeError("Region's latitude must be a number. Got '" + region.latitude + "' instead.");
+    }
+
+    if (typeof region.longitude !== 'number') {
+      throw new TypeError("Region's longitude must be a number. Got '" + region.longitude + "' instead.");
+    }
+
+    if (typeof region.radius !== 'number') {
+      throw new TypeError("Region's radius must be a number. Got '" + region.radius + "' instead.");
+    }
+  }
+}
+
+function startGeofencingAsync(taskName) {
+  var regions,
+      _args18 = arguments;
+  return _regenerator.default.async(function startGeofencingAsync$(_context18) {
+    while (1) {
+      switch (_context18.prev = _context18.next) {
+        case 0:
+          regions = _args18.length > 1 && _args18[1] !== undefined ? _args18[1] : [];
+
+          _validateTaskName(taskName);
+
+          _validateRegions(regions);
+
+          _context18.next = 5;
+          return _regenerator.default.awrap(_ExpoLocation.default.startGeofencingAsync(taskName, {
+            regions: regions
+          }));
+
+        case 5:
+        case "end":
+          return _context18.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function stopGeofencingAsync(taskName) {
+  return _regenerator.default.async(function stopGeofencingAsync$(_context19) {
+    while (1) {
+      switch (_context19.prev = _context19.next) {
+        case 0:
+          _validateTaskName(taskName);
+
+          _context19.next = 3;
+          return _regenerator.default.awrap(_ExpoLocation.default.stopGeofencingAsync(taskName));
+
+        case 3:
+        case "end":
+          return _context19.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function hasStartedGeofencingAsync(taskName) {
+  return _regenerator.default.async(function hasStartedGeofencingAsync$(_context20) {
+    while (1) {
+      switch (_context20.prev = _context20.next) {
+        case 0:
+          _validateTaskName(taskName);
+
+          return _context20.abrupt("return", _ExpoLocation.default.hasStartedGeofencingAsync(taskName));
+
+        case 2:
+        case "end":
+          return _context20.stop();
+      }
+    }
+  }, null, null, null, Promise);
+}
+
+function setApiKey(apiKey) {
+  console.warn("Location's method `setApiKey` is deprecated in favor of `setGoogleApiKey`.");
+  (0, _LocationGoogleGeocoding.setGoogleApiKey)(apiKey);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9Mb2NhdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUVBOztBQUNBOztBQThRQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQTFQQTs7QUFDQTs7QUFLQTs7QUFtUEE7Ozs7Ozs7O0FBalBPLFNBQWUsc0JBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLDJDQUNFLHNCQUFhLHNCQUFiLEVBREY7O0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7O0FBSUEsU0FBZSwwQkFBZjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZ0JBTUQsZUFBUyxFQUFULEtBQWdCLFNBTmY7QUFBQTtBQUFBO0FBQUE7O0FBQUEsNENBT0ksc0JBQWEsMEJBQWIsRUFQSjs7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTs7QUFnQkEsU0FBZSx1QkFBZjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUNMLFVBQUEsT0FESyw4REFDc0IsRUFEdEI7QUFBQSw0Q0FHRSxzQkFBYSx1QkFBYixDQUFxQyxPQUFyQyxDQUhGOztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQVdBLFNBQWUseUJBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFDTCxVQUFBLE9BREssOERBQytCLEVBRC9CO0FBQUEsNENBR0Usc0JBQWEseUJBQWIsQ0FBdUMsT0FBdkMsQ0FIRjs7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTs7QUFVQSxTQUFlLGtCQUFmLENBQWtDLE9BQWxDLEVBQTRELFFBQTVEO0FBQUE7QUFBQTtB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aUJBQWlCLENBQUMsUUFBRCxDQUFqQjs7QUFDQSxVQUFBLGdCQUFnQixDQUFDLE9BQUQsQ0FBaEI7O0FBTEs7QUFBQSw0Q0FNQyxzQkFBYSxvQkFBYixDQUFrQyxRQUFsQyxFQUE0QztBQUFFLFlBQUEsT0FBTyxFQUFQO0FBQUYsV0FBNUMsQ0FORDs7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTs7QUFTQSxTQUFlLG1CQUFmLENBQW1DLFFBQW5DO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFDTCxVQUFBLGlCQUFpQixDQUFDLFFBQUQsQ0FBakI7O0FBREs7QUFBQSw0Q0FFQyxzQkFBYSxtQkFBYixDQUFpQyxRQUFqQyxDQUZEOztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQUtBLFNBQWUseUJBQWYsQ0FBeUMsUUFBekM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUNMLFVBQUEsaUJBQWlCLENBQUMsUUFBRCxDQUFqQjs7QUFESyw2Q0FFRSxzQkFBYSx5QkFBYixDQUF1QyxRQUF2QyxDQUZGOztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQVNELFNBQVUsU0FBVixDQUFvQixNQUFwQixFQUFrQztBQUN0QyxFQUFBLE9BQU8sQ0FBQyxJQUFSLENBQWEsNEVBQWI7QUFDQSxnREFBZ0IsTUFBaEI7QUFDRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFBsYXRmb3JtIH0gZnJvbSAnQHVuaW1vZHVsZXMvY29yZSc7XG5pbXBvcnQgeyBQZXJtaXNzaW9uU3RhdHVzIH0gZnJvbSAndW5pbW9kdWxlcy1wZXJtaXNzaW9ucy1pbnRlcmZhY2UnO1xuXG5pbXBvcnQgRXhwb0xvY2F0aW9uIGZyb20gJy4vRXhwb0xvY2F0aW9uJztcbmltcG9ydCB7XG4gIExvY2F0aW9uQWNjdXJhY3ksXG4gIExvY2F0aW9uQ2FsbGJhY2ssXG4gIExvY2F0aW9uR2VvY29kZWRBZGRyZXNzLFxuICBMb2NhdGlvbkdlb2NvZGVkTG9jYXRpb24sXG4gIExvY2F0aW9uSGVhZGluZ0NhbGxiYWNrLFxuICBMb2NhdGlvbkhlYWRpbmdPYmplY3QsXG4gIExvY2F0aW9uTGFzdEtub3duT3B0aW9ucyxcbiAgTG9jYXRpb25PYmplY3QsXG4gIExvY2F0aW9uT3B0aW9ucyxcbiAgTG9jYXRpb25QZXJtaXNzaW9uUmVzcG9uc2UsXG4gIExvY2F0aW9uUHJvdmlkZXJTdGF0dXMsXG4gIExvY2F0aW9uUmVnaW9uLFxuICBMb2NhdGlvblN1YnNjcmlwdGlvbixcbiAgTG9jYXRpb25UYXNrT3B0aW9ucyxcbiAgTG9jYXRpb25BY3Rpdml0eVR5cGUsXG4gIExvY2F0aW9uR2VvZmVuY2luZ0V2ZW50VHlwZSxcbiAgTG9jYXRpb25HZW9mZW5jaW5nUmVnaW9uU3RhdGUsXG4gIExvY2F0aW9uR2VvY29kaW5nT3B0aW9ucyxcbn0gZnJvbSAnLi9Mb2NhdGlvbi50eXBlcyc7XG5pbXBvcnQgeyBMb2NhdGlvbkV2ZW50RW1pdHRlciB9IGZyb20gJy4vTG9jYXRpb25FdmVudEVtaXR0ZXInO1xuaW1wb3J0IHtcbiAgc2V0R29vZ2xlQXBpS2V5LFxuICBnb29nbGVHZW9jb2RlQXN5bmMsXG4gIGdvb2dsZVJldmVyc2VHZW9jb2RlQXN5bmMsXG59IGZyb20gJy4vTG9jYXRpb25Hb29nbGVHZW9jb2RpbmcnO1xuaW1wb3J0IHsgTG9jYXRpb25TdWJzY3JpYmVyLCBIZWFkaW5nU3Vic2NyaWJlciwgX2dldEN1cnJlbnRXYXRjaElkIH0gZnJvbSAnLi9Mb2NhdGlvblN1YnNjcmliZXJzJztcblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldFByb3ZpZGVyU3RhdHVzQXN5bmMoKTogUHJvbWlzZTxMb2NhdGlvblByb3ZpZGVyU3RhdHVzPiB7XG4gIHJldHVybiBFeHBvTG9jYXRpb24uZ2V0UHJvdmlkZXJTdGF0dXNBc3luYygpO1xufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZW5hYmxlTmV0d29ya1Byb3ZpZGVyQXN5bmMoKTogUHJvbWlzZTx2b2lkPiB7XG4gIC8vIElmIG5ldHdvcmsgcHJvdmlkZXIgaXMgZGlzYWJsZWQgKHVzZXIncyBsb2NhdGlvbiBtb2RlIGlzIHNldCB0byBcIkRldmljZSBvbmx5XCIpLFxuICAvLyBBbmRyb2lkJ3MgbG9jYXRpb24gcHJvdmlkZXIgbWF5IG5vdCBnaXZlIHlvdSBhbnkgcmVzdWx0cy4gVXNlIHRoaXMgbWV0aG9kIGluIG9yZGVyIHRvIGFzayB0aGUgdXNlclxuICAvLyB0byBjaGFuZ2UgdGhlIGxvY2F0aW9uIG1vZGUgdG8gXCJIaWdoIGFjY3VyYWN5XCIgd2hpY2ggdXNlcyBHb29nbGUgUGxheSBzZXJ2aWNlcyBhbmQgZW5hYmxlcyBuZXR3b3JrIHByb3ZpZGVyLlxuICAvLyBgZ2V0Q3VycmVudFBvc2l0aW9uQXN5bmNgIGFuZCBgd2F0Y2hQb3NpdGlvbkFzeW5jYCBhcmUgZG9pbmcgaXQgYXV0b21hdGljYWxseSBhbnl3YXkuXG5cbiAgaWYgKFBsYXRmb3JtLk9TID09PSAnYW5kcm9pZCcpIHtcbiAgICByZXR1cm4gRXhwb0xvY2F0aW9uLmVuYWJsZU5ldHdvcmtQcm92aWRlckFzeW5jKCk7XG4gIH1cbn1cblxuLyoqXG4gKiBSZXF1ZXN0cyBmb3Igb25lLXRpbWUgZGVsaXZlcnkgb2YgdGhlIHVzZXIncyBjdXJyZW50IGxvY2F0aW9uLlxuICogRGVwZW5kaW5nIG9uIGdpdmVuIGBhY2N1cmFjeWAgb3B0aW9uIGl0IG1heSB0YWtlIHNvbWUgdGltZSB0byByZXNvbHZlLFxuICogZXNwZWNpYWxseSB3aGVuIHlvdSdyZSBpbnNpZGUgYSBidWlsZGluZy5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldEN1cnJlbnRQb3NpdGlvbkFzeW5jKFxuICBvcHRpb25zOiBMb2NhdGlvbk9wdGlvbnMgPSB7fVxuKTogUHJvbWlzZTxMb2NhdGlvbk9iamVjdD4ge1xuICByZXR1cm4gRXhwb0xvY2F0aW9uLmdldEN1cnJlbnRQb3NpdGlvbkFzeW5jKG9wdGlvbnMpO1xufVxuXG4vKipcbiAqIEdldHMgdGhlIGxhc3Qga25vd24gcG9zaXRpb24gb2YgdGhlIGRldmljZSBvciBgbnVsbGAgaWYgaXQncyBub3QgYXZhaWxhYmxlXG4gKiBvciBkb2Vzbid0IG1hdGNoIGdpdmVuIHJlcXVpcmVtZW50cyBzdWNoIGFzIG1heGltdW0gYWdlIG9yIHJlcXVpcmVkIGFjY3VyYWN5LlxuICogSXQncyBjb25zaWRlcmVkIHRvIGJlIGZhc3RlciB0aGFuIGBnZXRDdXJyZW50UG9zaXRpb25Bc3luY2AgYXMgaXQgZG9lc24ndCByZXF1ZXN0IGZvciB0aGUgY3VycmVudCBsb2NhdGlvbi5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldExhc3RLbm93blBvc2l0aW9uQXN5bmMoXG4gIG9wdGlvbnM6IExvY2F0aW9uTGFzdEtub3duT3B0aW9ucyA9IHt9XG4pOiBQcm9taXNlPExvY2F0aW9uT2JqZWN0IHwgbnVsbD4ge1xuICByZXR1cm4gRXhwb0xvY2F0aW9uLmdldExhc3RLbm93blBvc2l0aW9uQXN5bmMob3B0aW9ucyk7XG59XG5cbi8qKlxuICogU3RhcnRzIHdhdGNoaW5nIGZvciBsb2NhdGlvbiBjaGFuZ2VzLlxuICogR2l2ZW4gY2FsbGJhY2sgd2lsbCBiZSBjYWxsZWQgb25jZSB0aGUgbmV3IGxvY2F0aW9uIGlzIGF2YWlsYWJsZS5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHdhdGNoUG9zaXRpb25Bc3luYyhvcHRpb25zOiBMb2NhdGlvbk9wdGlvbnMsIGNhbGxiYWNrOiBMb2NhdGlvbkNhbGxiYWNrKSB7XG4gIGNvbnN0IHdhdGNoSWQgPSBMb2NhdGlvblN1YnNjcmliZXIucmVnaXN0ZXJDYWxsYmFjayhjYWxsYmFjayk7XG4gIGF3YWl0IEV4cG9Mb2NhdGlvbi53YXRjaFBvc2l0aW9uSW1wbEFzeW5jKHdhdGNoSWQsIG9wdGlvbnMpO1xuXG4gIHJldHVybiB7XG4gICAgcmVtb3ZlKCkge1xuICAgICAgTG9jYXRpb25TdWJzY3JpYmVyLnVucmVnaXN0ZXJDYWxsYmFjayh3YXRjaElkKTtcbiAgICB9LFxuICB9O1xufVxuXG4vKipcbiAqIFJlc29sdmVzIHRvIGFuIG9iamVjdCB3aXRoIGN1cnJlbnQgaGVhZGluZyBkZXRhaWxzLlxuICogVG8gc2ltcGxpZnksIGl0IGNhbGxzIGB3YXRjaEhlYWRpbmdBc3luY2AgYW5kIHdhaXRzIGZvciBhIGNvdXBsZSBvZiB1cGRhdGVzXG4gKiBhbmQgcmV0dXJucyB0aGUgb25lIHRoYXQgaXMgYWNjdXJhdGUgZW5vdWdoLlxuICovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2V0SGVhZGluZ0FzeW5jKCk6IFByb21pc2U8TG9jYXRpb25IZWFkaW5nT2JqZWN0PiB7XG4gIHJldHVybiBuZXcgUHJvbWlzZTxMb2NhdGlvbkhlYWRpbmdPYmplY3Q+KGFzeW5jIHJlc29sdmUgPT4ge1xuICAgIGxldCB0cmllcyA9IDA7XG5cbiAgICBjb25zdCBzdWJzY3JpcHRpb24gPSBhd2FpdCB3YXRjaEhlYWRpbmdBc3luYyhoZWFkaW5nID0+IHtcbiAgICAgIGlmIChoZWFkaW5nLmFjY3VyYWN5ID4gMSB8fCB0cmllcyA+IDUpIHtcbiAgICAgICAgc3Vic2NyaXB0aW9uLnJlbW92ZSgpO1xuICAgICAgICByZXNvbHZlKGhlYWRpbmcpO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgdHJpZXMgKz0gMTtcbiAgICAgIH1cbiAgICB9KTtcbiAgfSk7XG59XG5cbi8qKlxuICogU3RhcnRzIHdhdGNoaW5nIGZvciBoZWFkaW5nIGNoYW5nZXMuXG4gKiBHaXZlbiBjYWxsYmFjayB3aWxsIGJlIGNhbGxlZCBvbmNlIHRoZSBuZXcgaGVhZGluZyBpcyBhdmFpbGFibGUuXG4gKi9cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiB3YXRjaEhlYWRpbmdBc3luYyhcbiAgY2FsbGJhY2s6IExvY2F0aW9uSGVhZGluZ0NhbGxiYWNrXG4pOiBQcm9taXNlPExvY2F0aW9uU3Vic2NyaXB0aW9uPiB7XG4gIGNvbnN0IHdhdGNoSWQgPSBIZWFkaW5nU3Vic2NyaWJlci5yZWdpc3RlckNhbGxiYWNrKGNhbGxiYWNrKTtcbiAgYXdhaXQgRXhwb0xvY2F0aW9uLndhdGNoRGV2aWNlSGVhZGluZyh3YXRjaElkKTtcblxuICByZXR1cm4ge1xuICAgIHJlbW92ZSgpIHtcbiAgICAgIEhlYWRpbmdTdWJzY3JpYmVyLnVucmVnaXN0ZXJDYWxsYmFjayh3YXRjaElkKTtcbiAgICB9LFxuICB9O1xufVxuXG4vKipcbiAqIEdlb2NvZGVzIGdpdmVuIGFkZHJlc3MgdG8gYW4gYXJyYXkgb2YgbGF0aXR1ZGUtbG9uZ2l0dWRlIGNvb3JkaW5hdGVzLlxuICovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2VvY29kZUFzeW5jKFxuICBhZGRyZXNzOiBzdHJpbmcsXG4gIG9wdGlvbnM/OiBMb2NhdGlvbkdlb2NvZGluZ09wdGlvbnNcbik6IFByb21pc2U8TG9jYXRpb25HZW9jb2RlZExvY2F0aW9uW10+IHtcbiAgaWYgKHR5cGVvZiBhZGRyZXNzICE9PSAnc3RyaW5nJykge1xuICAgIHRocm93IG5ldyBUeXBlRXJyb3IoYEFkZHJlc3MgdG8gZ2VvY29kZSBtdXN0IGJlIGEgc3RyaW5nLiBHb3QgJHthZGRyZXNzfSBpbnN0ZWFkLmApO1xuICB9XG4gIGlmIChvcHRpb25zPy51c2VHb29nbGVNYXBzIHx8IFBsYXRmb3JtLk9TID09PSAnd2ViJykge1xuICAgIHJldHVybiBhd2FpdCBnb29nbGVHZW9jb2RlQXN5bmMoYWRkcmVzcyk7XG4gIH1cbiAgcmV0dXJuIGF3YWl0IEV4cG9Mb2NhdGlvbi5nZW9jb2RlQXN5bmMoYWRkcmVzcyk7XG59XG5cbi8qKlxuICogVGhlIG9wcG9zaXRlIGJlaGF2aW9yIG9mIGBnZW9jb2RlQXN5bmNgIOKAlCB0cmFuc2xhdGVzIGxvY2F0aW9uIGNvb3JkaW5hdGVzIHRvIGFuIGFycmF5IG9mIGFkZHJlc3Nlcy5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHJldmVyc2VHZW9jb2RlQXN5bmMoXG4gIGxvY2F0aW9uOiBQaWNrPExvY2F0aW9uR2VvY29kZWRMb2NhdGlvbiwgJ2xhdGl0dWRlJyB8ICdsb25naXR1ZGUnPixcbiAgb3B0aW9ucz86IExvY2F0aW9uR2VvY29kaW5nT3B0aW9uc1xuKTogUHJvbWlzZTxMb2NhdGlvbkdlb2NvZGVkQWRkcmVzc1tdPiB7XG4gIGlmICh0eXBlb2YgbG9jYXRpb24ubGF0aXR1ZGUgIT09ICdudW1iZXInIHx8IHR5cGVvZiBsb2NhdGlvbi5sb25naXR1ZGUgIT09ICdudW1iZXInKSB7XG4gICAgdGhyb3cgbmV3IFR5cGVFcnJvcihcbiAgICAgICdMb2NhdGlvbiB0byByZXZlcnNlLWdlb2NvZGUgbXVzdCBiZSBhbiBvYmplY3Qgd2l0aCBudW1iZXIgcHJvcGVydGllcyBgbGF0aXR1ZGVgIGFuZCBgbG9uZ2l0dWRlYC4nXG4gICAgKTtcbiAgfVxuICBpZiAob3B0aW9ucz8udXNlR29vZ2xlTWFwcyB8fCBQbGF0Zm9ybS5PUyA9PT0gJ3dlYicpIHtcbiAgICByZXR1cm4gYXdhaXQgZ29vZ2xlUmV2ZXJzZUdlb2NvZGVBc3luYyhsb2NhdGlvbik7XG4gIH1cbiAgcmV0dXJuIGF3YWl0IEV4cG9Mb2NhdGlvbi5yZXZlcnNlR2VvY29kZUFzeW5jKGxvY2F0aW9uKTtcbn1cblxuLyoqXG4gKiBHZXRzIHRoZSBjdXJyZW50IHN0YXRlIG9mIGxvY2F0aW9uIHBlcm1pc3Npb25zLlxuICovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2V0UGVybWlzc2lvbnNBc3luYygpOiBQcm9taXNlPExvY2F0aW9uUGVybWlzc2lvblJlc3BvbnNlPiB7XG4gIHJldHVybiBhd2FpdCBFeHBvTG9jYXRpb24uZ2V0UGVybWlzc2lvbnNBc3luYygpO1xufVxuXG4vKipcbiAqIFJlcXVlc3RzIHRoZSB1c2VyIHRvIGdyYW50IGxvY2F0aW9uIHBlcm1pc3Npb25zLlxuICovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gcmVxdWVzdFBlcm1pc3Npb25zQXN5bmMoKTogUHJvbWlzZTxMb2NhdGlvblBlcm1pc3Npb25SZXNwb25zZT4ge1xuICByZXR1cm4gYXdhaXQgRXhwb0xvY2F0aW9uLnJlcXVlc3RQZXJtaXNzaW9uc0FzeW5jKCk7XG59XG5cbi8vIC0tLSBMb2NhdGlvbiBzZXJ2aWNlXG5cbi8qKlxuICogUmV0dXJucyBgdHJ1ZWAgaWYgdGhlIGRldmljZSBoYXMgbG9jYXRpb24gc2VydmljZXMgZW5hYmxlZCBvciBgZmFsc2VgIG90aGVyd2lzZS5cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGhhc1NlcnZpY2VzRW5hYmxlZEFzeW5jKCk6IFByb21pc2U8Ym9vbGVhbj4ge1xuICByZXR1cm4gYXdhaXQgRXhwb0xvY2F0aW9uLmhhc1NlcnZpY2VzRW5hYmxlZEFzeW5jKCk7XG59XG5cbi8vIC0tLSBCYWNrZ3JvdW5kIGxvY2F0aW9uIHVwZGF0ZXNcblxuZnVuY3Rpb24gX3ZhbGlkYXRlVGFza05hbWUodGFza05hbWU6IHN0cmluZykge1xuICBpZiAoIXRhc2tOYW1lIHx8IHR5cGVvZiB0YXNrTmFtZSAhPT0gJ3N0cmluZycpIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoYFxcYHRhc2tOYW1lXFxgIG11c3QgYmUgYSBub24tZW1wdHkgc3RyaW5nLiBHb3QgJHt0YXNrTmFtZX0gaW5zdGVhZC5gKTtcbiAgfVxufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gaXNCYWNrZ3JvdW5kTG9jYXRpb25BdmFpbGFibGVBc3luYygpOiBQcm9taXNlPGJvb2xlYW4+IHtcbiAgY29uc3QgcHJvdmlkZXJTdGF0dXMgPSBhd2FpdCBnZXRQcm92aWRlclN0YXR1c0FzeW5jKCk7XG4gIHJldHVybiBwcm92aWRlclN0YXR1cy5iYWNrZ3JvdW5kTW9kZUVuYWJsZWQ7XG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBzdGFydExvY2F0aW9uVXBkYXRlc0FzeW5jKFxuICB0YXNrTmFtZTogc3RyaW5nLFxuICBvcHRpb25zOiBMb2NhdGlvblRhc2tPcHRpb25zID0geyBhY2N1cmFjeTogTG9jYXRpb25BY2N1cmFjeS5CYWxhbmNlZCB9XG4pOiBQcm9taXNlPHZvaWQ+IHtcbiAgX3ZhbGlkYXRlVGFza05hbWUodGFza05hbWUpO1xuICBhd2FpdCBFeHBvTG9jYXRpb24uc3RhcnRMb2NhdGlvblVwZGF0ZXNBc3luYyh0YXNrTmFtZSwgb3B0aW9ucyk7XG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBzdG9wTG9jYXRpb25VcGRhdGVzQXN5bmModGFza05hbWU6IHN0cmluZyk6IFByb21pc2U8dm9pZD4ge1xuICBfdmFsaWRhdGVUYXNrTmFtZSh0YXNrTmFtZSk7XG4gIGF3YWl0IEV4cG9Mb2NhdGlvbi5zdG9wTG9jYXRpb25VcGRhdGVzQXN5bmModGFza05hbWUpO1xufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gaGFzU3RhcnRlZExvY2F0aW9uVXBkYXRlc0FzeW5jKHRhc2tOYW1lOiBzdHJpbmcpOiBQcm9taXNlPGJvb2xlYW4+IHtcbiAgX3ZhbGlkYXRlVGFza05hbWUodGFza05hbWUpO1xuICByZXR1cm4gRXhwb0xvY2F0aW9uLmhhc1N0YXJ0ZWRMb2NhdGlvblVwZGF0ZXNBc3luYyh0YXNrTmFtZSk7XG59XG5cbi8vIC0tLSBHZW9mZW5jaW5nXG5cbmZ1bmN0aW9uIF92YWxpZGF0ZVJlZ2lvbnMocmVnaW9uczogTG9jYXRpb25SZWdpb25bXSkge1xuICBpZiAoIXJlZ2lvbnMgfHwgcmVnaW9ucy5sZW5ndGggPT09IDApIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgICAnUmVnaW9ucyBhcnJheSBjYW5ub3QgYmUgZW1wdHkuIFVzZSBgc3RvcEdlb2ZlbmNpbmdBc3luY2AgaWYgeW91IHdhbnQgdG8gc3RvcCBnZW9mZW5jaW5nIGFsbCByZWdpb25zJ1xuICAgICk7XG4gIH1cbiAgZm9yIChjb25zdCByZWdpb24gb2YgcmVnaW9ucykge1xuICAgIGlmICh0eXBlb2YgcmVnaW9uLmxhdGl0dWRlICE9PSAnbnVtYmVyJykge1xuICAgICAgdGhyb3cgbmV3IFR5cGVFcnJvcihgUmVnaW9uJ3MgbGF0aXR1ZGUgbXVzdCBiZSBhIG51bWJlci4gR290ICcke3JlZ2lvbi5sYXRpdHVkZX0nIGluc3RlYWQuYCk7XG4gICAgfVxuICAgIGlmICh0eXBlb2YgcmVnaW9uLmxvbmdpdHVkZSAhPT0gJ251bWJlcicpIHtcbiAgICAgIHRocm93IG5ldyBUeXBlRXJyb3IoXG4gICAgICAgIGBSZWdpb24ncyBsb25naXR1ZGUgbXVzdCBiZSBhIG51bWJlci4gR290ICcke3JlZ2lvbi5sb25naXR1ZGV9JyBpbnN0ZWFkLmBcbiAgICAgICk7XG4gICAgfVxuICAgIGlmICh0eXBlb2YgcmVnaW9uLnJhZGl1cyAhPT0gJ251bWJlcicpIHtcbiAgICAgIHRocm93IG5ldyBUeXBlRXJyb3IoYFJlZ2lvbidzIHJhZGl1cyBtdXN0IGJlIGEgbnVtYmVyLiBHb3QgJyR7cmVnaW9uLnJhZGl1c30nIGluc3RlYWQuYCk7XG4gICAgfVxuICB9XG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBzdGFydEdlb2ZlbmNpbmdBc3luYyhcbiAgdGFza05hbWU6IHN0cmluZyxcbiAgcmVnaW9uczogTG9jYXRpb25SZWdpb25bXSA9IFtdXG4pOiBQcm9taXNlPHZvaWQ+IHtcbiAgX3ZhbGlkYXRlVGFza05hbWUodGFza05hbWUpO1xuICBfdmFsaWRhdGVSZWdpb25zKHJlZ2lvbnMpO1xuICBhd2FpdCBFeHBvTG9jYXRpb24uc3RhcnRHZW9mZW5jaW5nQXN5bmModGFza05hbWUsIHsgcmVnaW9ucyB9KTtcbn1cblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHN0b3BHZW9mZW5jaW5nQXN5bmModGFza05hbWU6IHN0cmluZyk6IFByb21pc2U8dm9pZD4ge1xuICBfdmFsaWRhdGVUYXNrTmFtZSh0YXNrTmFtZSk7XG4gIGF3YWl0IEV4cG9Mb2NhdGlvbi5zdG9wR2VvZmVuY2luZ0FzeW5jKHRhc2tOYW1lKTtcbn1cblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGhhc1N0YXJ0ZWRHZW9mZW5jaW5nQXN5bmModGFza05hbWU6IHN0cmluZyk6IFByb21pc2U8Ym9vbGVhbj4ge1xuICBfdmFsaWRhdGVUYXNrTmFtZSh0YXNrTmFtZSk7XG4gIHJldHVybiBFeHBvTG9jYXRpb24uaGFzU3RhcnRlZEdlb2ZlbmNpbmdBc3luYyh0YXNrTmFtZSk7XG59XG5cbi8qKlxuICogQGRlcHJlY2F0ZWRcbiAqIERlcHJlY2F0ZWQgYXMgb2YgU0RLMzkgaW4gZmF2b3VyIG9mIGBzZXRHb29nbGVBcGlLZXlgLlxuICovXG5leHBvcnQgZnVuY3Rpb24gc2V0QXBpS2V5KGFwaUtleTogc3RyaW5nKTogdm9pZCB7XG4gIGNvbnNvbGUud2FybihcIkxvY2F0aW9uJ3MgbWV0aG9kIGBzZXRBcGlLZXlgIGlzIGRlcHJlY2F0ZWQgaW4gZmF2b3Igb2YgYHNldEdvb2dsZUFwaUtleWAuXCIpO1xuICBzZXRHb29nbGVBcGlLZXkoYXBpS2V5KTtcbn1cblxuLy8gRm9yIGludGVybmFsIHB1cnBvc2VzXG5leHBvcnQgeyBMb2NhdGlvbkV2ZW50RW1pdHRlciBhcyBFdmVudEVtaXR0ZXIsIF9nZXRDdXJyZW50V2F0Y2hJZCB9O1xuXG4vLyBFeHBvcnQgYXMgbmFtZXNwYWNlZCB0eXBlcy5cbmV4cG9ydCB7XG4gIExvY2F0aW9uQWNjdXJhY3kgYXMgQWNjdXJhY3ksXG4gIExvY2F0aW9uQWN0aXZpdHlUeXBlIGFzIEFjdGl2aXR5VHlwZSxcbiAgTG9jYXRpb25HZW9mZW5jaW5nRXZlbnRUeXBlIGFzIEdlb2ZlbmNpbmdFdmVudFR5cGUsXG4gIExvY2F0aW9uR2VvZmVuY2luZ1JlZ2lvblN0YXRlIGFzIEdlb2ZlbmNpbmdSZWdpb25TdGF0ZSxcbiAgUGVybWlzc2lvblN0YXR1cyxcbiAgc2V0R29vZ2xlQXBpS2V5LFxufTtcblxuZXhwb3J0IHsgaW5zdGFsbFdlYkdlb2xvY2F0aW9uUG9seWZpbGwgfSBmcm9tICcuL0dlb2xvY2F0aW9uUG9seWZpbGwnO1xuZXhwb3J0ICogZnJvbSAnLi9Mb2NhdGlvbi50eXBlcyc7XG4iXSwic291cmNlUm9vdCI6IiJ9

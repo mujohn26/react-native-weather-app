@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/LocationEventEmitter.ts"],"names":[],"mappings":";;;;;;;AAAA;;AAEA;;AAEO,IAAM,oBAAoB,GAAG,IAAI,kBAAJ,CAAiB,qBAAjB,CAA7B","sourcesContent":["import { EventEmitter } from '@unimodules/core';\n\nimport ExpoLocation from './ExpoLocation';\n\nexport const LocationEventEmitter = new EventEmitter(ExpoLocation);\n"],"sourceRoot":""}

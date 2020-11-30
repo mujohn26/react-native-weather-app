@@ -1,0 +1,1 @@
+{"version":3,"sources":["setup.js"],"names":["mock","show"],"mappings":"AACE,cAAKA,IAAL,CAAU,0BAAV,EAAsC;AAAA,SAAO;AAC3CC,IAAAA,IAAI,EAAE,gBAAM,CAAE;AAD6B,GAAP;AAAA,CAAtC","sourcesContent":["\n  jest.mock('react-native-safari-view', () => ({\n    show: () => {},\n  }))"]}

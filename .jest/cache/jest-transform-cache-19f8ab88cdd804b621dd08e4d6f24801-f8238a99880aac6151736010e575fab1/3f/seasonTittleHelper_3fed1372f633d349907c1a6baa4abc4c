@@ -1,0 +1,12 @@
+1924d6811ff33d4aadb531e101e7a75c
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  "Rain": "Rainy",
+  "Clouds": "Cloudy",
+  "Sun": "Sunny"
+};
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlYXNvblRpdHRsZUhlbHBlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O2VBQWU7QUFDWCxVQUFRLE9BREc7QUFFWCxZQUFVLFFBRkM7QUFHWCxTQUFPO0FBSEksQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IHtcbiAgICBcIlJhaW5cIjogXCJSYWlueVwiLFxuICAgIFwiQ2xvdWRzXCI6IFwiQ2xvdWR5XCIsXG4gICAgXCJTdW5cIjogXCJTdW5ueVwiLFxuICB9XG4gICJdfQ==

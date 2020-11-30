@@ -1,0 +1,23 @@
+d9292683510e8db2f8cfea8cf5c47593
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _redux = require("redux");
+
+var _reduxDevtoolsExtension = require("redux-devtools-extension");
+
+var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+
+var _index = _interopRequireDefault(require("../reducer/index"));
+
+var _initialState = _interopRequireDefault(require("./initialState"));
+
+var middleware = (0, _redux.applyMiddleware)(_reduxThunk.default);
+var store = (0, _redux.createStore)(_index.default, _initialState.default, (0, _reduxDevtoolsExtension.composeWithDevTools)(middleware));
+var _default = store;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbIm1pZGRsZXdhcmUiLCJ0aHVuayIsInN0b3JlIiwiY29tYmluZVJlZHVjZXJzIiwiaW5pdGlhbFN0YXRlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBRUEsSUFBTUEsVUFBVSxHQUFHLDRCQUFnQkMsbUJBQWhCLENBQW5CO0FBRUEsSUFBTUMsS0FBSyxHQUFHLHdCQUNaQyxjQURZLEVBRVpDLHFCQUZZLEVBR1osaURBQW9CSixVQUFwQixDQUhZLENBQWQ7ZUFNZUUsSyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGNyZWF0ZVN0b3JlLCBhcHBseU1pZGRsZXdhcmUgfSBmcm9tICdyZWR1eCc7XG5pbXBvcnQgeyBjb21wb3NlV2l0aERldlRvb2xzIH0gZnJvbSAncmVkdXgtZGV2dG9vbHMtZXh0ZW5zaW9uJztcbmltcG9ydCB0aHVuayBmcm9tICdyZWR1eC10aHVuayc7XG5pbXBvcnQgY29tYmluZVJlZHVjZXJzIGZyb20gJy4uL3JlZHVjZXIvaW5kZXgnO1xuaW1wb3J0IGluaXRpYWxTdGF0ZSBmcm9tICcuL2luaXRpYWxTdGF0ZSc7XG5cbmNvbnN0IG1pZGRsZXdhcmUgPSBhcHBseU1pZGRsZXdhcmUodGh1bmspO1xuXG5jb25zdCBzdG9yZSA9IGNyZWF0ZVN0b3JlKFxuICBjb21iaW5lUmVkdWNlcnMsXG4gIGluaXRpYWxTdGF0ZSxcbiAgY29tcG9zZVdpdGhEZXZUb29scyhtaWRkbGV3YXJlKVxuKTtcblxuZXhwb3J0IGRlZmF1bHQgc3RvcmU7Il19
