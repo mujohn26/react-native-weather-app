@@ -1,0 +1,28 @@
+7747ed0ba046cb942533844cd19f5ef6
+_getJestObj().mock("Linking", function () {
+  return {
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    openURL: jest.fn(),
+    canOpenURL: jest.fn(),
+    getInitialURL: jest.fn()
+  };
+});
+
+_getJestObj().mock('react-native-safari-view', function () {
+  return {
+    show: function show() {}
+  };
+});
+
+function _getJestObj() {
+  var _require = require("@jest/globals"),
+      jest = _require.jest;
+
+  _getJestObj = function _getJestObj() {
+    return jest;
+  };
+
+  return jest;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHVwLmpzIl0sIm5hbWVzIjpbIm1vY2siLCJhZGRFdmVudExpc3RlbmVyIiwiamVzdCIsImZuIiwicmVtb3ZlRXZlbnRMaXN0ZW5lciIsIm9wZW5VUkwiLCJjYW5PcGVuVVJMIiwiZ2V0SW5pdGlhbFVSTCIsInNob3ciXSwibWFwcGluZ3MiOiJBQUFBLGNBQUtBLElBQUwsQ0FBVSxTQUFWLEVBQXFCLFlBQU07QUFDdkIsU0FBTztBQUNMQyxJQUFBQSxnQkFBZ0IsRUFBRUMsSUFBSSxDQUFDQyxFQUFMLEVBRGI7QUFFTEMsSUFBQUEsbUJBQW1CLEVBQUVGLElBQUksQ0FBQ0MsRUFBTCxFQUZoQjtBQUdMRSxJQUFBQSxPQUFPLEVBQUVILElBQUksQ0FBQ0MsRUFBTCxFQUhKO0FBSUxHLElBQUFBLFVBQVUsRUFBRUosSUFBSSxDQUFDQyxFQUFMLEVBSlA7QUFLTEksSUFBQUEsYUFBYSxFQUFFTCxJQUFJLENBQUNDLEVBQUw7QUFMVixHQUFQO0FBT0QsQ0FSSDs7QUFVRSxjQUFLSCxJQUFMLENBQVUsMEJBQVYsRUFBc0M7QUFBQSxTQUFPO0FBQzNDUSxJQUFBQSxJQUFJLEVBQUUsZ0JBQU0sQ0FBRTtBQUQ2QixHQUFQO0FBQUEsQ0FBdEMiLCJzb3VyY2VzQ29udGVudCI6WyJqZXN0Lm1vY2soXCJMaW5raW5nXCIsICgpID0+IHtcbiAgICByZXR1cm4ge1xuICAgICAgYWRkRXZlbnRMaXN0ZW5lcjogamVzdC5mbigpLFxuICAgICAgcmVtb3ZlRXZlbnRMaXN0ZW5lcjogamVzdC5mbigpLFxuICAgICAgb3BlblVSTDogamVzdC5mbigpLFxuICAgICAgY2FuT3BlblVSTDogamVzdC5mbigpLFxuICAgICAgZ2V0SW5pdGlhbFVSTDogamVzdC5mbigpXG4gICAgfTtcbiAgfSk7XG5cbiAgamVzdC5tb2NrKCdyZWFjdC1uYXRpdmUtc2FmYXJpLXZpZXcnLCAoKSA9PiAoe1xuICAgIHNob3c6ICgpID0+IHt9LFxuICB9KSkiXX0=

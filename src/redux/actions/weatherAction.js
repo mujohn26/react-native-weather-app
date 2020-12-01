@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const GET_WEATHER_DATA_SUCCESS = "GET_WEATHER_DATA_SUCCESS";
-export const GET_WEATHER_DATA_FAILURE = "GET_WEATHER_DATA_SUCCESS";
+export const GET_WEATHER_DATA_FAILURE = "GET_WEATHER_DATA_FAILURE";
 import * as Location from 'expo-location';
 import { API_KEY } from "@env";
 import { isSameDay, format } from "date-fns";
@@ -24,10 +24,11 @@ export const getWeather = () => async (dispatch) => {
     const endpoint = `/forecast?lat=${lat}&lon=${lng}&units=metric&appid=${API_KEY}`;
     const res = await callAPI.get(endpoint);
     const data = filterData(res.data);
+
     const currentWeather = data.list.filter((day) => {
       const now = new Date().getTime() + Math.abs(data.timezone * 1000);
       const currentDate = new Date(day.dt * 1000);
-      return isSameDay(now, currentDate);  
+      return isSameDay(now, currentDate);   
   });
   dispatch(getWeatherSuccess({data:data,weather:currentWeather[0]}));
   } catch (error) {

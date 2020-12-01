@@ -1,0 +1,18 @@
+a7199fa7ff011144070bc818160e58b1
+_getJestObj().mock('react-native-safari-view', function () {
+  return {
+    show: function show() {}
+  };
+});
+
+function _getJestObj() {
+  var _require = require("@jest/globals"),
+      jest = _require.jest;
+
+  _getJestObj = function _getJestObj() {
+    return jest;
+  };
+
+  return jest;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHVwLmpzIl0sIm5hbWVzIjpbIm1vY2siLCJzaG93Il0sIm1hcHBpbmdzIjoiQUFFRSxjQUFLQSxJQUFMLENBQVUsMEJBQVYsRUFBc0M7QUFBQSxTQUFPO0FBQzNDQyxJQUFBQSxJQUFJLEVBQUUsZ0JBQU0sQ0FBRTtBQUQ2QixHQUFQO0FBQUEsQ0FBdEMiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuICBqZXN0Lm1vY2soJ3JlYWN0LW5hdGl2ZS1zYWZhcmktdmlldycsICgpID0+ICh7XG4gICAgc2hvdzogKCkgPT4ge30sXG4gIH0pKSJdfQ==

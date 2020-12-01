@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
-import cloudyImage from "../assets/Images/forest_cloudy.png";
+import cloudyImage from "../assets/Images/forest_cloudy.png"; 
 import { format } from "date-fns";
 
 import imageHelper from "../helpers/imageHelper";
 import seasonTitle from "../helpers/seasonTittleHelper";
 
-class Weather extends Component {
+ export class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,7 @@ class Weather extends Component {
     };
   }
   UNSAFE_componentWillMount() {
+
     const daysByHour = this.props.weatherData.list.map((day) => {
       const dt = new Date(day.dt * 1000);
       return {
@@ -24,7 +25,7 @@ class Weather extends Component {
         temp: Math.round(day.main.temp),
         weather: day.weather[0].main,
       };
-    });
+    }); 
     daysByHour.forEach((obj) => {
       if (!this.state.weekDays.some((o) => o.name === obj.name)) {
         this.state.weekDays.push({ ...obj });
