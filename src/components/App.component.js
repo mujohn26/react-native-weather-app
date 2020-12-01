@@ -15,7 +15,6 @@ class  App extends Component{
     }
     UNSAFE_componentWillMount(){
       const {getWeather} = this.props;
-      // const {lat,lan}=this.state;
       getWeather();
   }
   render(){
