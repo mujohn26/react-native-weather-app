@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --coverage && coveralls"
+    "test": "jest --coverage"
+  
   },
   "jest": {
     "preset": "jest-expo",
