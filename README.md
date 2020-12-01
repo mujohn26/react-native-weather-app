@@ -1,3 +1,3 @@
 # react-native-weather-app
 
-[![Build Status](https://travis-ci.com/mujohn26/react-native-weather-app.svg?branch=feature%2Ftests)](https://travis-ci.com/mujohn26/react-native-weather-app)  [![Coverage Status](https://coveralls.io/repos/github/mujohn26/react-native-weather-app/badge.svg?branch=feature/tests)](https://coveralls.io/github/mujohn26/react-native-weather-app?branch=feature/tests)
+[![Build Status](https://travis-ci.com/mujohn26/react-native-weather-app.svg?branch=feature%2Ftests)](https://travis-ci.com/mujohn26/react-native-weather-app)  [![Coverage Status](https://coveralls.io/repos/github/mujohn26/react-native-weather-app/badge.svg?branch=feature/tests)](https://coveralls.io/github/mujohn26/react-native-weather-app?branch=feature/tests)  [![Maintainability](https://api.codeclimate.com/v1/badges/848df48e3d762e62c5b9/maintainability)](https://codeclimate.com/github/mujohn26/react-native-weather-app/maintainability)
